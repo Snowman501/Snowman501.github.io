@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PromptForgeDigital — AI tools, dev tools, digital downloads, custom websites and apps built for entrepreneurs, creators and developers.">
+<title>PromptForgeDigital | AI Tools Built for Builders</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #00ff41;
+  --cyan: #00fff7;
+  --dark: #020c07;
+  --darker: #010804;
+  --card: #061208;
+  --border: rgba(0,255,65,0.15);
+  --text: rgba(255,255,255,0.85);
+  --dim: rgba(255,255,255,0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--darker);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--darker); }
+::-webkit-scrollbar-thumb { background: var(--green); }
+
+/* Scanlines */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.012) 2px, rgba(0,255,65,0.012) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ========== NAV ========== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(1,8,4,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav-logo span { color: var(--green); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--dim);
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.nav-cta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  padding: 8px 20px;
+  border: 1px solid var(--green);
+  color: var(--green);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.nav-cta:hover {
+  background: var(--green);
+  color: #000;
+}
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 40px 60px;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,65,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,65,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.hero-orb1 {
+  position: absolute;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,65,0.08) 0%, transparent 70%);
+  top: -200px; left: -200px;
+  animation: breathe 6s ease-in-out infinite;
+}
+
+.hero-orb2 {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,247,0.06) 0%, transparent 70%);
+  bottom: -100px; right: -100px;
+  animation: breathe 8s ease-in-out infinite reverse;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 4px;
+  border: 1px solid rgba(0,255,65,0.3);
+  padding: 6px 18px;
+  margin-bottom: 28px;
+  animation: fadein 0.8s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(42px, 7vw, 84px);
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: 0 0 60px rgba(0,255,65,0.3);
+  margin-bottom: 12px;
+  animation: fadein 0.8s 0.1s ease both;
+}
+
+.hero-title span { color: var(--green); }
+
+.hero-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  text-shadow: 0 0 20px rgba(0,255,247,0.4);
+  animation: fadein 0.8s 0.2s ease both;
+}
+
+.hero-desc {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--dim);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  animation: fadein 0.8s 0.3s ease both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadein 0.8s 0.4s ease both;
+}
+
+.btn-primary {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 14px 32px;
+  background: var(--green);
+  color: #000;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+  box-shadow: 0 0 30px rgba(0,255,65,0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 50px rgba(0,255,65,0.7);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 14px 32px;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(0,255,247,0.08);
+  transform: translateY(-2px);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  animation: fadein 0.8s 0.5s ease both;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--green);
+  text-shadow: 0 0 20px rgba(0,255,65,0.5);
+}
+
+.stat-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 3px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ========== SECTIONS ========== */
+section {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 48px);
+  color: #fff;
+  margin-bottom: 16px;
+  text-shadow: 0 0 30px rgba(0,255,65,0.2);
+}
+
+.section-title span { color: var(--green); }
+
+.section-desc {
+  font-size: 18px;
+  color: var(--dim);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+  margin-bottom: 20px;
+  box-shadow: 0 0 8px rgba(0,255,65,0.5);
+}
+
+/* ========== PRODUCTS GRID ========== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.product-card:hover {
+  border-color: rgba(0,255,65,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,255,65,0.08);
+}
+
+.product-card:hover::before { opacity: 1; }
+
+.product-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--green);
+  letter-spacing: 3px;
+  border: 1px solid rgba(0,255,65,0.3);
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.product-tag.cyan {
+  color: var(--cyan);
+  border-color: rgba(0,255,247,0.3);
+}
+
+.product-tag.free {
+  color: #ffd700;
+  border-color: rgba(255,215,0,0.3);
+}
+
+.product-icon {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.product-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.product-desc {
+  font-size: 15px;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.product-features {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.product-features li {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-features li::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  flex-shrink: 0;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+
+.product-price {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--green);
+  text-shadow: 0 0 15px rgba(0,255,65,0.5);
+}
+
+.product-price.free-price { color: #ffd700; text-shadow: 0 0 15px rgba(255,215,0,0.5); }
+
+.btn-card {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 8px 16px;
+  border: 1px solid var(--green);
+  color: var(--green);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+.btn-card:hover { background: var(--green); color: #000; }
+.btn-card.cyan-btn { border-color: var(--cyan); color: var(--cyan); }
+.btn-card.cyan-btn:hover { background: var(--cyan); color: #000; }
+
+/* ========== SERVICES ========== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.service-card:hover {
+  border-color: rgba(0,255,247,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,255,247,0.06);
+}
+
+.service-icon {
+  font-size: 40px;
+  margin-bottom: 18px;
+}
+
+.service-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.service-desc {
+  font-size: 15px;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-price {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: var(--cyan);
+  letter-spacing: 1px;
+}
+
+/* ========== MERCH / EXTERNAL ========== */
+.external-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.external-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.external-card:hover {
+  border-color: rgba(0,255,65,0.35);
+  transform: translateY(-4px);
+}
+
+.external-logo {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.external-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.external-desc {
+  font-size: 14px;
+  color: var(--dim);
+  line-height: 1.5;
+}
+
+.external-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 2px;
+}
+
+/* ========== WHY US ========== */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.why-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.why-num {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 48px;
+  color: rgba(0,255,65,0.15);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.why-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+.why-desc {
+  font-size: 15px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* ========== TERMINAL SECTION ========== */
+.terminal-showcase {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 740px;
+  margin: 0 auto;
+  box-shadow: 0 0 60px rgba(0,255,65,0.1);
+}
+
+.terminal-bar {
+  background: #0d1f0d;
+  border-bottom: 1px solid rgba(0,255,65,0.15);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.r { background: #ff5f57; }
+.dot.y { background: #febc2e; }
+.dot.g { background: #28c840; }
+
+.t-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--dim);
+  margin: 0 auto;
+  letter-spacing: 1px;
+}
+
+.terminal-body {
+  padding: 24px 28px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.t-g { color: var(--green); }
+.t-c { color: var(--cyan); }
+.t-w { color: rgba(255,255,255,0.8); }
+.t-d { color: rgba(255,255,255,0.3); }
+
+.cursor {
+  display: inline-block;
+  width: 8px; height: 15px;
+  background: var(--green);
+  vertical-align: middle;
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+  box-shadow: 0 0 6px var(--green);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ========== CTA BANNER ========== */
+.cta-banner {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--green);
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  max-width: 100%;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0,255,65,0.08) 0%, transparent 60%);
+}
+
+.cta-banner .section-title { font-size: clamp(28px, 4vw, 52px); }
+
+.cta-banner .section-desc {
+  margin: 0 auto 40px;
+  max-width: 520px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--darker);
+  border-top: 1px solid var(--border);
+  padding: 60px 40px 40px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand .nav-logo {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: var(--dim);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover { color: var(--green); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: gap;
+}
+
+.footer-bottom p {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 1px;
+}
+
+.footer-bottom span { color: var(--green); }
+
+/* ========== FULL-WIDTH WRAPPER ========== */
+.full-width {
+  background: rgba(0,0,0,0.3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  section { padding: 70px 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><span>Prompt</span>ForgeDigital</a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#merch">Store</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://payhip.com/PromptForgeHub" target="_blank" class="nav-cta">SHOP NOW</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">// BUILT FOR BUILDERS</div>
+    <h1 class="hero-title"><span>Prompt</span>Forge<br>Digital</h1>
+    <div class="hero-sub">AI Tools That Actually Work</div>
+    <p class="hero-desc">AI prompt packs, dev tools, custom websites, apps and digital resources — everything you need to work smarter, build faster and grow your business.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">EXPLORE TOOLS</a>
+      <a href="#services" class="btn-secondary">HIRE US</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">9+</div>
+        <div class="stat-label">DEV TOOLS</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">INSTANT DOWNLOAD</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">SUBSCRIPTION</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">USE FOREVER</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">▼ &nbsp; SCROLL TO EXPLORE</div>
+</div>
+
+<!-- TERMINAL SHOWCASE -->
+<div class="full-width">
+  <section style="text-align:center;">
+    <div class="section-label" style="text-align:center;">// LIVE PREVIEW</div>
+    <h2 class="section-title" style="text-align:center;">See It In <span>Action</span></h2>
+    <p class="section-desc" style="margin: 0 auto 48px; text-align:center;">Real tools. Real output. No fluff.</p>
+    <div class="terminal-showcase">
+      <div class="terminal-bar">
+        <div class="dot r"></div>
+        <div class="dot y"></div>
+        <div class="dot g"></div>
+        <div class="t-title">dev-suite-pro.sh — 10x DEV MEGA-COMMAND CENTER</div>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-d">==========================================</span></div>
+        <div><span class="t-c">&nbsp;&nbsp;&nbsp;10x DEV MEGA-COMMAND CENTER v2.0</span></div>
+        <div><span class="t-d">==========================================</span></div>
+        <div>&nbsp;</div>
+        <div><span class="t-g">1)</span> <span class="t-w">Senior Code Reviewer</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="t-g">6)</span> <span class="t-w">SQL Schema Generator</span></div>
+        <div><span class="t-g">2)</span> <span class="t-w">Chain-of-Thought Debugger</span> &nbsp;&nbsp;&nbsp; <span class="t-g">7)</span> <span class="t-w">Unit Test Writer</span></div>
+        <div><span class="t-g">3)</span> <span class="t-w">System Architecture Builder</span> &nbsp; <span class="t-g">8)</span> <span class="t-w">Git Commit Message Gen</span></div>
+        <div><span class="t-g">4)</span> <span class="t-w">Instant Doc-Gen (README)</span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="t-g">9)</span> <span class="t-w">Regex Pattern Maker</span></div>
+        <div><span class="t-g">5)</span> <span class="t-w">View History</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="t-g">10)</span> <span class="t-w">Exit</span></div>
+        <div>&nbsp;</div>
+        <div><span class="t-d">------------------------------------------</span></div>
+        <div><span class="t-c">Select a tool [1-10]: </span><span class="cursor"></span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-label">// DIGITAL DOWNLOADS</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Our <span>Products</span></h2>
+  <p class="section-desc">Instant download. Use forever. No subscriptions. Built for real results.</p>
+
+  <div class="products-grid">
+
+    <!-- Product 1 - Featured -->
+    <div class="product-card">
+      <div class="product-tag">BEST SELLER</div>
+      <div class="product-icon">⚡</div>
+      <div class="product-name">10x Developer AI Mega-Suite: 9-in-1 Linux Terminal Tool</div>
+      <div class="product-desc">Stop writing bad AI prompts. This Linux terminal tool generates expert-level prompts for 9 different dev tasks in seconds.</div>
+      <ul class="product-features">
+        <li>Senior Code Reviewer & CoT Debugger</li>
+        <li>SQL Schema Generator & Unit Test Writer</li>
+        <li>System Architect & Git Commit Gen</li>
+        <li>Auto-Prompt History Logger</li>
+        <li>Works with Claude, ChatGPT & Gemini</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$12</div>
+        <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-card">GET IT NOW</a>
+      </div>
+    </div>
+
+    <!-- Product 2 - Free Lead Magnet -->
+    <div class="product-card">
+      <div class="product-tag free">FREE</div>
+      <div class="product-icon">🎁</div>
+      <div class="product-name">20 Free AI Prompts for Small Business Owners</div>
+      <div class="product-desc">Get started with 20 battle-tested AI prompts designed specifically for small business owners and entrepreneurs.</div>
+      <ul class="product-features">
+        <li>Marketing & social media prompts</li>
+        <li>Business planning prompts</li>
+        <li>Customer service templates</li>
+        <li>Content creation prompts</li>
+        <li>Instant download, no strings attached</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price free-price">FREE</div>
+        <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-card">DOWNLOAD</a>
+      </div>
+    </div>
+
+    <!-- Product 3 - Coming Soon -->
+    <div class="product-card">
+      <div class="product-tag cyan">COMING SOON</div>
+      <div class="product-icon">🚀</div>
+      <div class="product-name">Entrepreneur AI Prompt Mega-Pack: 50-in-1</div>
+      <div class="product-desc">50 expertly engineered AI prompts covering every stage of building and scaling a business — from idea to launch.</div>
+      <ul class="product-features">
+        <li>Business plan & pitch deck prompts</li>
+        <li>Marketing & brand strategy prompts</li>
+        <li>Sales scripts & email sequences</li>
+        <li>Social media content calendar</li>
+        <li>Investor & partnership outreach</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$19</div>
+        <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-card cyan-btn">NOTIFY ME</a>
+      </div>
+    </div>
+
+    <!-- Product 4 - Coming Soon -->
+    <div class="product-card">
+      <div class="product-tag cyan">COMING SOON</div>
+      <div class="product-icon">🌐</div>
+      <div class="product-name">Freelancer Website Starter Kit</div>
+      <div class="product-desc">A complete HTML/CSS website template built for freelancers and digital entrepreneurs. Edit and launch in under an hour.</div>
+      <ul class="product-features">
+        <li>5 fully designed pages</li>
+        <li>Mobile responsive out of the box</li>
+        <li>Contact form included</li>
+        <li>SEO optimized structure</li>
+        <li>Deploy free on GitHub Pages</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$27</div>
+        <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-card cyan-btn">NOTIFY ME</a>
+      </div>
+    </div>
+
+    <!-- Product 5 - Coming Soon -->
+    <div class="product-card">
+      <div class="product-tag cyan">COMING SOON</div>
+      <div class="product-icon">🤖</div>
+      <div class="product-name">AI Content Machine: 30-Day Social Media Prompt Pack</div>
+      <div class="product-desc">30 days of ready-to-use AI prompts that generate scroll-stopping social media content for any niche or platform.</div>
+      <ul class="product-features">
+        <li>Instagram, TikTok & Twitter/X prompts</li>
+        <li>One prompt per day for 30 days</li>
+        <li>Works for any business niche</li>
+        <li>Engagement-focused frameworks</li>
+        <li>Bonus: Hashtag strategy guide</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$15</div>
+        <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-card cyan-btn">NOTIFY ME</a>
+      </div>
+    </div>
+
+    <!-- Product 6 - Coming Soon -->
+    <div class="product-card">
+      <div class="product-tag cyan">COMING SOON</div>
+      <div class="product-icon">🛠️</div>
+      <div class="product-name">Linux Power User Toolkit: Bash Scripts Bundle</div>
+      <div class="product-desc">A collection of powerful bash scripts that automate repetitive Linux tasks and supercharge your terminal workflow.</div>
+      <ul class="product-features">
+        <li>System monitoring dashboard</li>
+        <li>Auto backup & file organizer</li>
+        <li>Network tools & port scanner</li>
+        <li>Custom alias setup script</li>
+        <li>Full documentation included</li>
+      </ul>
+      <div class="product-footer">
+        <div class="product-price">$22</div>
+        <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-card cyan-btn">NOTIFY ME</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div class="full-width">
+<section id="services" style="max-width:1200px; margin:0 auto;">
+  <div class="section-label">// HIRE US</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Custom <span>Services</span></h2>
+  <p class="section-desc">Need something built from scratch? We build custom websites, tools and apps for entrepreneurs and small businesses.</p>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">🌐</div>
+      <div class="service-name">Custom Website Design</div>
+      <div class="service-desc">Professional, mobile-ready websites built from scratch for small businesses, freelancers and personal brands. Clean code, fast loading, SEO ready.</div>
+      <div class="service-price">Starting at $299</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🛒</div>
+      <div class="service-name">Digital Store Setup</div>
+      <div class="service-desc">Full setup of your Payhip, Gumroad or Etsy digital store. Product listings, descriptions, branding and launch strategy included.</div>
+      <div class="service-price">Starting at $149</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <div class="service-name">Custom AI Prompt Packs</div>
+      <div class="service-desc">We build a custom AI prompt library tailored specifically to your business, your niche and your workflow. Done-for-you.</div>
+      <div class="service-price">Starting at $99</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <div class="service-name">Linux Tool Development</div>
+      <div class="service-desc">Custom bash scripts and Linux terminal tools built for your specific workflow. Automate tasks, save hours every week.</div>
+      <div class="service-price">Starting at $199</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <div class="service-name">Web App Development</div>
+      <div class="service-desc">Simple web apps and tools built to your specifications. Dashboards, calculators, automation tools and more.</div>
+      <div class="service-price">Starting at $499</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <div class="service-name">SEO & Store Optimization</div>
+      <div class="service-desc">Get your store and website found on Google. Keyword research, on-page SEO, listing optimization and traffic strategy.</div>
+      <div class="service-price">Starting at $79</div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- MERCH / EXTERNAL STORES -->
+<section id="merch">
+  <div class="section-label">// FIND US EVERYWHERE</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Our <span>Stores</span></h2>
+  <p class="section-desc">Shop our products and merchandise across multiple platforms — find us wherever you shop.</p>
+
+  <div class="external-grid">
+
+    <a href="https://payhip.com/PromptForgeHub" target="_blank" class="external-card">
+      <div class="external-logo">💾</div>
+      <div class="external-name">Payhip Store</div>
+      <div class="external-desc">Our main digital downloads hub. AI tools, prompt packs, dev tools and templates.</div>
+      <div class="external-link">SHOP NOW →</div>
+    </a>
+
+    <a href="#" class="external-card">
+      <div class="external-logo">🛒</div>
+      <div class="external-name">Amazon Store</div>
+      <div class="external-desc">Physical products and merchandise. PromptForgeDigital branded gear for builders.</div>
+      <div class="external-link">COMING SOON →</div>
+    </a>
+
+    <a href="#" class="external-card">
+      <div class="external-logo">🎨</div>
+      <div class="external-name">Etsy Shop</div>
+      <div class="external-desc">Digital printables, planners and templates for entrepreneurs and creators.</div>
+      <div class="external-link">COMING SOON →</div>
+    </a>
+
+    <a href="#" class="external-card">
+      <div class="external-logo">👕</div>
+      <div class="external-name">Merch Store</div>
+      <div class="external-desc">PromptForgeDigital apparel and branded merchandise for the builder community.</div>
+      <div class="external-link">COMING SOON →</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<div class="full-width">
+<section id="about" style="max-width:1200px; margin:0 auto;">
+  <div class="section-label">// WHY PROMPTFORGEDIGITAL</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Built by a <span>Builder</span></h2>
+  <p class="section-desc">Every product comes from real experience solving real problems the hard way.</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div class="why-title">Clarity First</div>
+      <div class="why-desc">Every tool and product is designed to remove confusion and replace it with clear, actionable results. No fluff, no theory.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div class="why-title">Real World Tested</div>
+      <div class="why-desc">Nothing gets released until it's been used to solve a real problem. If it doesn't work in the real world, it doesn't ship.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div class="why-title">Affordable Always</div>
+      <div class="why-desc">Great tools shouldn't cost a fortune. Everything here is priced so builders at any stage can access what they need.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div class="why-title">Builder Community</div>
+      <div class="why-desc">PromptForgeDigital is more than a store — it's a hub for people who are building something real and need the right tools to do it.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="contact">
+  <div style="position:relative; z-index:2;">
+    <div class="section-label" style="text-align:center;">// READY TO BUILD?</div>
+    <h2 class="section-title" style="text-align:center;">Start with a <span>Free Tool</span></h2>
+    <p class="section-desc" style="margin: 0 auto 40px;">Grab our free AI prompt pack and see what PromptForgeDigital is all about — no credit card, no catch.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-primary">GET FREE PROMPTS</a>
+      <a href="https://payhip.com/PromptForgeHub" target="_blank" class="btn-secondary">VIEW ALL PRODUCTS</a>
+    </div>
+    <p style="margin-top:28px; font-family:'Share Tech Mono',monospace; font-size:12px; color:var(--dim); letter-spacing:2px;">
+      payhip.com/<span style="color:var(--cyan);">PromptForgeHub</span>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo"><span>Prompt</span>ForgeDigital</a>
+      <p>AI tools, dev tools, custom websites and digital resources built for entrepreneurs, creators and developers who are building something real.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="https://payhip.com/PromptForgeHub" target="_blank">10x Dev Mega-Suite</a></li>
+        <li><a href="https://payhip.com/PromptForgeHub" target="_blank">Free AI Prompts</a></li>
+        <li><a href="https://payhip.com/PromptForgeHub" target="_blank">Prompt Packs</a></li>
+        <li><a href="https://payhip.com/PromptForgeHub" target="_blank">Dev Tools</a></li>
+        <li><a href="https://payhip.com/PromptForgeHub" target="_blank">Templates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Custom Websites</a></li>
+        <li><a href="#services">Store Setup</a></li>
+        <li><a href="#services">AI Prompt Packs</a></li>
+        <li><a href="#services">Linux Tools</a></li>
+        <li><a href="#services">Web Apps</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://payhip.com/PromptForgeHub" target="_blank">Payhip Store</a></li>
+        <li><a href="https://github.com/Snowman501" target="_blank">GitHub</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>PromptForgeDigital</span> — All rights reserved.</p>
+    <p>Built by <span>Loren Barnhart</span> — AI Tools That Actually Work</p>
+  </div>
+</footer>
+
+</body>
+</html>
